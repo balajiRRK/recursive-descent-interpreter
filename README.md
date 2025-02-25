@@ -3,4 +3,4 @@ An interpreter for a custom pseudo-code-esque language built using recursive des
 
 # How to run and test
 
-Run the .sh scripts using `./tester.sh` within Tests directory to individually test each key component of the interpreter.
+Run the .sh scripts using `./tester.sh` within Test directory for each type of test (tokenizer, parser, interpreter tests) to individually test each key component of the interpreter.
