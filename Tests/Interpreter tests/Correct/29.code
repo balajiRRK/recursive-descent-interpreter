@@ -1,0 +1,9 @@
+procedure c29 is
+	integer x;
+begin
+	for (x=0; x < 10; x+1) do
+		integer a;
+		read(a);
+		print(a);
+	end
+end

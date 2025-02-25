@@ -1,0 +1,7 @@
+procedure c7 is
+begin
+	object x;
+	x = new object('default', 123);
+	x['test'] = 5;
+	print(x['test']);
+end

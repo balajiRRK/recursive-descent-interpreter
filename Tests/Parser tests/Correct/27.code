@@ -1,0 +1,27 @@
+procedure RidiculousSemanticTest is
+    integer a;
+    integer b;
+    integer c;
+begin
+    object a;
+    if a == a then
+        a = new object('baba', a / 509123 * (b + 4/c/3 - 45*a));
+        a['baba'] = a * b * c;
+        object b;
+        for(b = 1234; b == c; a)do
+            b['abba'] = a['baba'];
+            a:b; b:a;
+            integer b;
+            object c;
+            if 1 == a then
+                object b;
+                b:c;
+            end
+        end
+        a:b; b:a;
+    end
+    a = b; b = a;
+    object b;
+    a = b; b = a;
+    a:b; b:a;
+end

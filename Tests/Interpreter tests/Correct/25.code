@@ -1,0 +1,17 @@
+procedure c25 is
+	object x;
+	object y;
+begin
+	integer a;
+	object n;
+	x = new object('default', 1);
+	n = new object('default', 1);
+	n = 5;
+	x = 4;
+	y : x;
+	for (a=0; not x == 0; a+1) do
+		n = n*x;
+		y = y-1;
+		print(n);
+	end
+end

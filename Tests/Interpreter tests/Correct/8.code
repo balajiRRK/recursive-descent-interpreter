@@ -1,0 +1,7 @@
+procedure c8 is
+	object x;
+begin
+	x = new object('default', 1);
+	x = 5;
+	print(x);
+end

@@ -1,0 +1,9 @@
+procedure c9 is
+	object y;
+begin
+	object x;
+	x = new object('test', 1);
+	y : x;
+	x = 5;
+	print(y);
+end

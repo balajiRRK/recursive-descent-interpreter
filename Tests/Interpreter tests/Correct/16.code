@@ -1,0 +1,15 @@
+procedure c16 is
+begin
+	integer x;
+	integer y;
+	integer z;
+	for (x=5; not x == 0; x-1) do
+		for (y=10; not y == 100; y+1) do
+			for (z=100; 0 < z; z-1) do
+				integer a;
+			end
+		end
+		print(x);
+	end
+	print(x);
+end

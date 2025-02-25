@@ -1,0 +1,7 @@
+procedure c6 is
+	object x;
+begin
+	x = new object('test', 1);
+	x['test'] = 5;
+	print(x['test']);
+end

@@ -1,0 +1,9 @@
+procedure e01 is
+	integer x;
+	integer	y;
+begin
+	x = 100;
+	for (x=100; 0<x; x-1) do
+		read(y);
+	end
+end

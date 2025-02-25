@@ -1,0 +1,23 @@
+procedure c23 is
+	integer x;
+	integer y;
+	integer z;
+	object a;
+	object b;
+	object c;
+begin
+	x=5;
+	y=10;
+	if not x < y then
+		for (x=5; 0 - 10 < x; x-1) do
+			integer x;
+			print(x);
+		end
+	else
+		for (y=10; y < 15; y+2) do
+			integer y;
+			print(y);
+		end
+	end
+	print(y);
+end

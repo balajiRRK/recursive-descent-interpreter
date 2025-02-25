@@ -1,0 +1,5 @@
+# ignore .student files
+*.student
+
+# ignore .class files
+*.class

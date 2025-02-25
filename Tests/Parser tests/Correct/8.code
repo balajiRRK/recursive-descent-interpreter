@@ -1,0 +1,12 @@
+procedure test8 is
+	integer x;
+	integer y;
+	integer z;
+	object a;
+	object b;
+	object c;
+begin
+	read(x);
+	print(x);
+	a=new object('default', 3);
+end

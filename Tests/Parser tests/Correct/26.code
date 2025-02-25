@@ -1,0 +1,10 @@
+procedure test26 is
+	integer x;
+	integer n;
+begin
+	x=4;
+	for (x=x; not x==0; x-1) do
+		read(n);
+		print(n);
+	end
+end

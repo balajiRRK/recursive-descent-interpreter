@@ -1,0 +1,8 @@
+procedure e03 is
+	object x;
+	object z;
+begin
+	x = new object('default', 5);
+	z = new object('default', 5);
+	x = z['test'];
+end

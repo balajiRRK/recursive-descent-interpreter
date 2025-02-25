@@ -1,0 +1,10 @@
+procedure c26 is
+	object x;
+	integer n;
+begin
+	x = new object('default', 1);
+	for (x=4; not x == 0; x-1) do
+		read(n);
+		print(n);
+	end
+end

@@ -1,0 +1,10 @@
+
+program integer X , Y , XY 	; a ( b, c, d) begin a=a+b+c; ;begin
+
+          X = 0;
+		  
+		  print(X);
+
+          end  
+      
+and instance

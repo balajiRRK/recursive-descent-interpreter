@@ -1,0 +1,13 @@
+procedure c20 is
+	object x;
+	object y;
+	object z;
+begin
+	x = new object('a', 1);
+	y = new object('b', 1);
+	z = new object('c', 1);
+	x = 5;
+	y = 10;
+	z = x - y * 5 - 5;
+	print(z);
+end

@@ -1,0 +1,20 @@
+procedure c24 is
+	object x;
+	object y;
+	integer z;
+begin
+	x = new object('default', 1);
+	y = new object('default', 1);
+	x = 5;
+	y = 10;
+	for (z=1; not x == y; z+1) do
+		if x < y then
+			x = x + 2;
+		end
+		if not x < y then
+			y = y+1;
+		end
+	end
+	print(x);
+	print(y);
+end

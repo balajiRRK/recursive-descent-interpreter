@@ -1,0 +1,13 @@
+procedure c13 is
+	integer x;
+	integer y;
+	integer z;
+begin
+	y = 10;
+	for(x=1; not x == y; x-0) do
+		for (z=100; 1 < z; z-1) do
+			x = y;
+		end
+	end
+	print(x);
+end

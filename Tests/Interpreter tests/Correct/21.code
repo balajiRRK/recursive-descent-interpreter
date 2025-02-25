@@ -1,0 +1,19 @@
+procedure c21 is 
+	integer a;
+	integer b;
+	integer c;
+begin
+	object x;
+	object y;
+	object z;
+	x = new object('a1', 1);
+	y = new object('a2', 1);
+	z = new object('a3', 1);
+	x = 5;
+	y = 2;
+	z = x - y * 5 - 5;
+	a = z;
+	b = z;
+	c = x + y - z * (a * b);
+	print(c);
+end

@@ -1,0 +1,6 @@
+procedure c3 is
+	integer x;
+begin
+	read(x);
+	print(x);
+end

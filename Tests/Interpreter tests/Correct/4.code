@@ -1,0 +1,10 @@
+procedure c4 is
+	integer y;
+begin
+	integer x;
+	read(x);
+	for (x=x; not x == 9; y) do
+		print(10);
+		read(y);
+	end
+end

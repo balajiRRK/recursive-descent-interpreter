@@ -1,0 +1,14 @@
+procedure test22 is
+	integer x;
+	integer y;
+	integer z;
+begin
+	x = 5;
+	y = 10;
+	if x < y then
+		for (x=x; (0 - 10) < x; x-1) do
+			print(x);
+		end
+	end
+	print(x);
+end

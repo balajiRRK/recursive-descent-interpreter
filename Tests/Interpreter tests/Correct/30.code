@@ -1,0 +1,12 @@
+procedure c30 is
+	object x;
+	object y;
+	object z;
+begin
+	x = new object('default', 1);
+	y : x;
+	z : y;
+	for (x=64; not z == 0 and y == 0; x-1) do
+		print(x);
+	end
+end

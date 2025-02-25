@@ -1,0 +1,22 @@
+procedure c22 is
+	object x;
+	object y;
+	object z;
+begin
+	x = new object('a', 1);
+	y = new object('b', 1);
+	y = 10;
+	if x < y then
+		integer z;
+		for (x=5; (0 - 10) < x; x - 1 + z) do
+			integer a;
+			integer b;
+			integer c;
+			a = 5;
+			b = 5;
+			c = 5;
+			z = a + b + c;
+		end
+	end
+	print(x);
+end

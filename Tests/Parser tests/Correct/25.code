@@ -1,0 +1,11 @@
+procedure test25 is
+	integer x;
+	integer n;
+begin
+	n = 5;
+	x = 4;
+	for (x=x; not x==0; x-1) do
+		n = n*x;
+		print(n);
+	end
+end

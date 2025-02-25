@@ -1,0 +1,13 @@
+procedure c27 is
+	object x;
+	object y;
+begin
+	integer a;
+	x = new object('default', 1);
+	x = 4;
+	y : x;
+	for (a=0; not x == 0; a-1) do
+		y = y-1;
+	end
+	print(x);
+end
