@@ -3,20 +3,19 @@ import java.util.Map;
 
 public class Variable {
     int val;
-    String type;
+    Core type;
     Map<String, Integer> map;
     String originalKey;
 
     public Variable(int temp)
     {
         val = temp;
-        type = "int";
+        type = Core.INTEGER;
     }
 
     public Variable()
     {
-        map = new HashMap<String, Integer>();
-        type = "map";
+        type = Core.OBJECT;
     }
 
     // <assign>'s id = new object( string, <expr> );'
@@ -25,14 +24,14 @@ public class Variable {
         map = new HashMap<String, Integer>();
         map.put(temp, temp2);
         originalKey = temp;
-        type = "map";
+        type = Core.OBJECT;
     }
     
     // GETTERS & SETTERS
 
     public int getVal()
     {
-        if (type.equals("int"))
+        if (type == Core.INTEGER)
         {
             return val;
         } else {
@@ -40,7 +39,7 @@ public class Variable {
         }
     }
     
-    public String getType() {
+    public Core getType() {
         return type;
     }
     
@@ -70,10 +69,14 @@ public class Variable {
 
     // id = <expr> for eitiher original key = val assignment or int id = val assignment
     public void setVal(int val) {
-        if (type.equals("int"))
+        if (type == Core.INTEGER)
         {
             this.val = val;
-        } else {
+        } else { // obj
+            if (map == null) {
+                System.out.println("ERROR: Object has not been declared yet, cannot assign default key value");
+                System.exit(0);
+            }
             map.put(originalKey, val);
         }
     }
@@ -87,6 +90,8 @@ public class Variable {
     // id : id2
     public void setMapReference(Variable temp)
     {
+        // System.out.println("[DEBUG] temp val: " + temp.toString());
+        // System.out.println("[DEBUG] obj val: " + temp.getObjVal(temp.getOriginalKey()));
         map = temp.getMap();
         originalKey = temp.getOriginalKey();
     }
@@ -103,4 +108,3 @@ public class Variable {
         }
     }
 }
-

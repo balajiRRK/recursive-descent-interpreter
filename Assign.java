@@ -124,6 +124,7 @@ class Assign {
 
     void execute()
     {
+        
         if (scenario == 0) // id = <expr>;
         {
             // System.out.println("map with id: " + Memory.getSpecificMap(id).toString());
@@ -131,19 +132,20 @@ class Assign {
             Memory.getSpecificMap(id).get(id).setVal(e.execute());
             // System.out.println("expr val: " + e.execute());
             // System.out.println("id val within map with id: " + Memory.getSpecificMap(id).get(id).getVal());
-            // Memory.getMap().get(id).setVal(e.execute());
         } else if (scenario == 1) // id [ string ] = <expr>;  
         {
             Memory.getSpecificMap(id).get(id).addToObject(string, e.execute());
-            // Memory.getMap().get(id).addToObject(string, e.execute());
         } else if (scenario == 2) // id = new object( string, <expr> );
         {
+            // System.out.println("[DEBUG] id: " + id);
+            // System.out.println("[DEBUG] string key: " + string);
+            // System.out.println("[DEBUG] val: " + e.execute());
             Memory.getSpecificMap(id).put(id, new Variable(string, e.execute()));
-            // Memory.getMap().put(id, new Variable(string, e.execute()));
         } else if (scenario == 3) // id : id2 ;
         {
-            Memory.getSpecificMap(id).get(id).setMapReference(Memory.getMap().get(id2));
-            // Memory.getMap().get(id).setMapReference(Memory.getMap().get(id2));
+            // System.out.println("[DEBUG] id2: " + id2);
+            // System.out.println("[DEBUG] id2 : " + id);
+            Memory.getSpecificMap(id).get(id).setMapReference(Memory.getSpecificMap(id2).get(id2));
         }
     }
 }

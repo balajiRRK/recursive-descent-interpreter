@@ -71,15 +71,14 @@ class Loop {
 
     void execute()
     {
-
         // set initial value
         Memory.getSpecificMap(id).get(id).setVal(e.execute());
         while (c.execute()) 
         {
             Memory.push();
             ss.execute(); // execute body
+            Memory.pop(); // pop before updating id since it exits body scope by then
             Memory.getSpecificMap(id).get(id).setVal(e2.execute()); // update id
-            Memory.pop();
         }
     }
 }

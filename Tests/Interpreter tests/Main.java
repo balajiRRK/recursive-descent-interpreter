@@ -8,9 +8,7 @@ class Main {
         
         p.parse();
 
-        Memory m = new Memory();
-
-        m.s = new Scanner(args[1]);
+        Memory.s = new Scanner(args[1]);
         p.execute();
     }
 }
