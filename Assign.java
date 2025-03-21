@@ -123,9 +123,7 @@ class Assign {
     }
 
     void execute()
-    {
-        
-        
+    {   
         if (scenario == 0) // id = <expr>;
         {
             Memory.getSpecificMap(id).get(id).setVal(e.execute());
@@ -134,9 +132,6 @@ class Assign {
             Memory.getSpecificMap(id).get(id).addToObject(string, e.execute());
         } else if (scenario == 2) // id = new object( string, <expr> );
         {
-            // System.out.println("[DEBUG] id: " + id);
-            // System.out.println("[DEBUG] string key: " + string);
-            // System.out.println("[DEBUG] val: " + e.execute());
             Memory.getSpecificMap(id).put(id, new Variable(string, e.execute()));
         } else if (scenario == 3) // id : id2 ;
         {

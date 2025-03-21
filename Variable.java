@@ -90,8 +90,6 @@ public class Variable {
     // id : id2
     public void setMapReference(Variable temp)
     {
-        // System.out.println("[DEBUG] temp val: " + temp.toString());
-        // System.out.println("[DEBUG] obj val: " + temp.getObjVal(temp.getOriginalKey()));
         map = temp.getMap();
         originalKey = temp.getOriginalKey();
     }
