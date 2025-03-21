@@ -29,8 +29,6 @@ class Print {
 
     void execute()
     {
-        // System.out.println("Current stack: " + Memory.getStack().toString());
-        // System.out.println("Val of id: " + Memory.getSpecificMap("x").get("x").getVal());
         System.out.println(e.execute()); 
     }
 }

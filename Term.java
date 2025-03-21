@@ -58,8 +58,15 @@ class Term {
             value *= t.execute();
         } else if (scenario == 2)
         {
-            // need to check if dividing by 0 and throw error somehow
-            value /= t.execute();
+            int temp = t.execute();
+            if (temp != 0)
+            {
+                value /= temp;
+            } else
+            {
+                System.out.println("ERROR: Cannot divide by 0");
+                System.exit(0);
+            }
         }  
         
         return value;

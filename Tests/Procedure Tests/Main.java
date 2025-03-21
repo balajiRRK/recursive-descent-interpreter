@@ -5,7 +5,6 @@ class Main {
         Parser.scanner = s;
 
         Procedure p = new Procedure();
-        
         p.parse();
 
         Memory.s = new Scanner(args[1]);

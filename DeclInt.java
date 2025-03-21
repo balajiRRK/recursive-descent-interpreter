@@ -34,5 +34,4 @@ class DeclInt {
         // default val of 0
         Memory.addToMap(id, new Variable(0));
     }
-
 }

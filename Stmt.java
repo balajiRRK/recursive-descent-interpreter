@@ -6,6 +6,7 @@ class Stmt {
     Print p;
     Read r;
     Decl d;
+    Call c;
 
     void parse()
     {
@@ -33,6 +34,10 @@ class Stmt {
         {
             d = new Decl();
             d.parse();
+        } else if (Parser.scanner.currentToken() == Core.BEGIN) // Call
+        {
+            c = new Call();
+            c.parse();
         } else
         {
             System.out.println("ERROR: Not valid statement " + Parser.scanner.currentToken());
@@ -83,6 +88,9 @@ class Stmt {
         } else if (d != null)
         {
             d.execute();
+        } else if (c != null)
+        {
+            c.execute();
         }
     }
 }

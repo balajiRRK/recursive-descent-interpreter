@@ -33,5 +33,4 @@ class DeclObj {
     {
         Memory.addToMap(id, new Variable()); // new map
     }
-
 }

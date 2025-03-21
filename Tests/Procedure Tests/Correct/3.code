@@ -1,0 +1,15 @@
+procedure c3 is
+	procedure x (object a, b ) is 
+		a = b; 
+	end 
+	object x;
+	object y;
+begin
+	x = new object('default', 1);
+	y = new object('default', 1);
+	x = 1;
+	y = 2;
+	begin x(x, y);
+	print(x);
+	print(y);
+end

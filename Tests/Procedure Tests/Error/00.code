@@ -1,0 +1,10 @@
+procedure err0 is
+	procedure A (object r ) is
+	end
+	object x;
+begin
+	x = new object('default', 1);
+	x = 1;
+	begin A(x);
+	print(4);
+end

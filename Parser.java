@@ -3,7 +3,7 @@ import java.util.Stack;
 
 class Parser {
 
-    // used to store all 
+    // stores all variables for all scopes
     public static Stack<Map<String, String>> stackOfMaps = new Stack<Map<String, String>>();
     public static Scanner scanner;
 

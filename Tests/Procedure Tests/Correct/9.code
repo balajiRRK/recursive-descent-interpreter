@@ -1,0 +1,16 @@
+procedure c9 is
+	object x;
+	procedure A (object r ) is
+		integer a;
+		if r < 9 then
+			read(a);
+			r = a;
+			begin A(r); 
+		end
+	end
+begin
+	x = new object('default', 1);
+	read(x);
+	begin A(x);
+	print(x);
+end

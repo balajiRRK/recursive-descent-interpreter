@@ -33,11 +33,7 @@ class Read {
         // set current token value to id val whether its an int or an object
         if (Memory.s.currentToken() != Core.EOS)
         {
-            // System.out.println(id);
-            // System.out.println(Memory.getMap().toString());
-            // System.out.println(Memory.getMap().get(id));
             Memory.getSpecificMap(id).get(id).setVal(Memory.s.getConst()); // might not be in top map
-            // Memory.getMap().get(id).setVal(Memory.s.get.getConst());
         } else if (Memory.s.currentToken() == Core.EOS)
         {
             System.out.println("ERROR: Data file out of values");

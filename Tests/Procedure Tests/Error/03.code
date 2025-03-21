@@ -1,0 +1,15 @@
+procedure err3 is
+	procedure A(object r ) is
+		integer x;
+		x = r;
+	end
+	procedure A(object r ) is
+		integer x;
+		x = r;
+	end
+	object a;
+begin
+	a = new object('default', 1);
+	a = 5;
+	begin A(a);
+end

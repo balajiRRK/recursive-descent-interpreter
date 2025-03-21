@@ -80,12 +80,10 @@ class Factor {
         if (scenario == 0) // id
         {
             return Memory.getSpecificMap(id).get(id).getVal();
-            // return Memory.getMap().get(id).getVal();
         } else if (scenario == 1) // id [ string ]
         {
             // does error checking to see if key val pair exists
             return Memory.getSpecificMap(id).get(id).getObjVal(string);
-            // return Memory.getMap().get(id).getObjVal(string);
         } else if (scenario == 2) // const
         {
             return constVal;
@@ -94,6 +92,6 @@ class Factor {
             return e.execute();
         }
 
-        return 0; // wont run
+        return -1; // wont run
     }
 }

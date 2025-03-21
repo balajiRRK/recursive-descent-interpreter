@@ -1,0 +1,20 @@
+procedure c6 is
+	procedure x (object x, y ) is
+		if y<1 then
+			x = 0; 
+		else 
+			y = y-1; 
+			begin x(x, y); 
+		end
+	end
+	object a;
+	object b;
+begin
+	a = new object('default', 1);
+	b = new object('default', 1);
+	a = 10;
+	b = 5;
+	begin x(a, b);
+	print(a);
+	print(b);
+end

@@ -2,13 +2,22 @@ class DeclSeq {
 
     Decl d;
     DeclSeq ds;
+    Function f;
 
     void parse()
     {
-        d = new Decl();
-        d.parse();
         if (Parser.scanner.currentToken() == Core.INTEGER || Parser.scanner.currentToken() == Core.OBJECT)
         {
+            d = new Decl();
+            d.parse();
+
+            ds = new DeclSeq();
+            ds.parse();
+        } else if (Parser.scanner.currentToken() == Core.PROCEDURE)
+        {
+            f = new Function();
+            f.parse();
+
             ds = new DeclSeq();
             ds.parse();
         }
@@ -35,6 +44,10 @@ class DeclSeq {
             d.execute();
         } 
         
+        if (f != null) {
+            f.execute();
+        }
+
         if (ds != null)
         {
             ds.execute();
