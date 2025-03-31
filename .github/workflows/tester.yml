@@ -23,3 +23,21 @@ jobs:
             echo "❌ Some tests failed!"
             exit 1
           fi
+
+      - name: Summarize test scores 
+        run: |
+          correct_score=$(echo "$output" | grep -A1 "Correct cases score out of" | tail -n 1)
+          error_score=$(echo "$output" | grep -A1 "Error cases score out of" | tail -n 1)
+
+          expected_correct=$(echo "$output" | grep -oP "Correct cases score out of \K\d+")
+          expected_error=$(echo "$output" | grep -oP "Error cases score out of \K\d+")
+
+          echo "Correct cases: $correct_score / $expected_correct"
+          echo "Error cases: $error_score / $expected_error"
+
+          if [[ "$correct_score" -ne "$expected_correct" || "$error_score" -ne "$expected_error" ]]; then
+            echo "❌ Score mismatch! Some tests failed."
+            exit 1  # Mark the workflow as failed
+          else
+            echo "✅ All tests passed successfully."
+          fi
