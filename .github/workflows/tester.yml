@@ -22,11 +22,11 @@ jobs:
       - name: Summarize test scores 
         working-directory: Tests/Procedure Tests
         run: |
-          correct_score=$(grep -A1 "Correct cases score out of" | tail -n 1)
-          error_score=$(grep -A1 "Error cases score out of" | tail -n 1)
+          correct_score=$(grep -A1 "Correct cases score out of" tester_output.log | tail -n 1)
+          error_score=$(grep -A1 "Error cases score out of" tester_output.log | tail -n 1)
 
-          expected_correct=$(grep -oP "Correct cases score out of \K\d+")
-          expected_error=$(grep -oP "Error cases score out of \K\d+")
+          expected_correct=$(grep -oP "Correct cases score out of \K\d+" tester_output.log)
+          expected_error=$(grep -oP "Error cases score out of \K\d+" tester_output.log)
 
           echo "Correct cases: $correct_score / $expected_correct"
           echo "Error cases: $error_score / $expected_error"
