@@ -38,6 +38,12 @@ jobs:
           echo "Correct cases: $correct_score / $expected_correct"
           echo "Error cases: $error_score / $expected_error"
 
+          echo "[DEBUG] correct_score $correct_score"
+          echo "[DEBUG] expected_correct $expected_correct"
+          echo "[DEBUG] error_score $error_score"
+          echo "[DEBUG] expected_error $expected_error"
+
+
           if [[ "$correct_score" -ne "$expected_correct" || "$error_score" -ne "$expected_error" ]]; then
             echo "❌ Some tests failed"
             exit 1  # Mark the workflow as failed
