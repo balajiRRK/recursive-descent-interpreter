@@ -8,8 +8,8 @@ javac Main.java
 runner="java -cp . Main"
 
 # Correct test cases
-count=$(find "Correct/" -maxdepth 1 -type f -regex  ".*/[0-9]+\.code" | wc -l)
-for ((i = 1; i <= $count; i++))
+correctCount=$(find "Correct/" -maxdepth 1 -type f -regex  ".*/[0-9]+\.code" | wc -l)
+for ((i = 1; i <= $correctCount; i++))
 do
 	echo ""
 	echo "Running ${i}.code"
@@ -33,8 +33,8 @@ echo "----------------"
 echo "Running error cases:"
 echo "----------------"
 
-count=$(find "Error/" -maxdepth 1 -type f -regex  ".*/[0-9]+\.code" | wc -l)
-for ((i = 1; i <= $count; i++))
+errorCount=$(find "Error/" -maxdepth 1 -type f -regex  ".*/[0-9]+\.code" | wc -l)
+for ((i = 1; i <= $errorCount; i++))
 do
 	echo ""
 	echo "Running ${i}.code"
@@ -54,9 +54,9 @@ echo ""
 rm Error/temp1
 rm Error/temp2
 
-echo "Correct cases score out of 11:"
+echo "Correct cases score out of $correctCount:"
 echo $correctScore
-echo "Error cases score out of 4:"
+echo "Error cases score out of $errorCount:"
 echo $errorScore
 
 echo "Done!"
