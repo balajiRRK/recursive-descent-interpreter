@@ -10,17 +10,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set execute permissions for test scripts
-        working-directory: Tests/Procedure Tests
+      - name: Set execute permissions for Tokenizer test scripts
+        working-directory: Tests/Tokenizer tests
         run: chmod +x tester.sh
 
-      - name: Run test cases
-        working-directory: Tests/Procedure Tests
+      - name: Run Tokenizer test cases
+        working-directory: Tests/Tokenizer tests
         run: |
           ./tester.sh | tee tester_output.log
 
-      - name: Summarize test scores 
-        working-directory: Tests/Procedure Tests
+      - name: Summarize Tokenizer test cases
+        working-directory: Tests/Tokenizer tests
         run: |
           correct_score=$(grep -A1 "Correct cases score out of" tester_output.log | tail -n 1)
           error_score=$(grep -A1 "Error cases score out of" tester_output.log | tail -n 1)
@@ -31,11 +31,89 @@ jobs:
           echo "Correct cases: $correct_score / $expected_correct"
           echo "Error cases: $error_score / $expected_error"
 
-          echo "[DEBUG] correct_score $correct_score"
-          echo "[DEBUG] expected_correct $expected_correct"
-          echo "[DEBUG] error_score $error_score"
-          echo "[DEBUG] expected_error $expected_error"
+          if [[ "$correct_score" -ne "$expected_correct" || "$error_score" -ne "$expected_error" ]]; then
+            echo "❌ Some tests failed"
+            exit 1  # Mark the workflow as failed
+          else
+            echo "✅ All tests passed successfully"
+          fi 
 
+      - name: Set execute permissions for Parser test scripts
+        working-directory: Tests/Parser tests
+        run: chmod +x tester.sh
+
+      - name: Run Parser test cases
+        working-directory: Tests/Parser tests
+        run: |
+          ./tester.sh | tee tester_output.log
+
+      - name: Summarize Parser test cases
+        working-directory: Tests/Parser tests
+        run: |
+          correct_score=$(grep -A1 "Correct cases score out of" tester_output.log | tail -n 1)
+          error_score=$(grep -A1 "Error cases score out of" tester_output.log | tail -n 1)
+
+          expected_correct=$(grep -oP "Correct cases score out of \K\d+" tester_output.log)
+          expected_error=$(grep -oP "Error cases score out of \K\d+" tester_output.log)
+
+          echo "Correct cases: $correct_score / $expected_correct"
+          echo "Error cases: $error_score / $expected_error"
+
+          if [[ "$correct_score" -ne "$expected_correct" || "$error_score" -ne "$expected_error" ]]; then
+            echo "❌ Some tests failed"
+            exit 1  # Mark the workflow as failed
+          else
+            echo "✅ All tests passed successfully"
+          fi   
+
+      - name: Set execute permissions for Interpreter test scripts
+        working-directory: Tests/Interpreter tests
+        run: chmod +x tester.sh
+
+      - name: Run Interpreter test cases
+        working-directory: Tests/Interpreter tests
+        run: |
+          ./tester.sh | tee tester_output.log
+
+      - name: Summarize Interpreter test cases
+        working-directory: Tests/Interpreter tests
+        run: |
+          correct_score=$(grep -A1 "Correct cases score out of" tester_output.log | tail -n 1)
+          error_score=$(grep -A1 "Error cases score out of" tester_output.log | tail -n 1)
+
+          expected_correct=$(grep -oP "Correct cases score out of \K\d+" tester_output.log)
+          expected_error=$(grep -oP "Error cases score out of \K\d+" tester_output.log)
+
+          echo "Correct cases: $correct_score / $expected_correct"
+          echo "Error cases: $error_score / $expected_error"
+
+          if [[ "$correct_score" -ne "$expected_correct" || "$error_score" -ne "$expected_error" ]]; then
+            echo "❌ Some tests failed"
+            exit 1  # Mark the workflow as failed
+          else
+            echo "✅ All tests passed successfully"
+          fi   
+
+      - name: Set execute permissions for Procedure test scripts
+        working-directory: Tests/Procedure tests
+        run: chmod +x tester.sh
+
+      - name: Run Procedure test cases
+        working-directory: Tests/Procedure tests
+        run: |
+          ./tester.sh | tee tester_output.log
+
+      - name: Summarize Procedure test scores 
+        working-directory: Tests/Procedure tests
+        run: |
+          correct_score=$(grep -A1 "Correct cases score out of" tester_output.log | tail -n 1)
+          error_score=$(grep -A1 "Error cases score out of" tester_output.log | tail -n 1)
+
+          expected_correct=$(grep -oP "Correct cases score out of \K\d+" tester_output.log)
+          expected_error=$(grep -oP "Error cases score out of \K\d+" tester_output.log)
+
+          echo "Correct cases: $correct_score / $expected_correct"
+          echo "Error cases: $error_score / $expected_error"
 
           if [[ "$correct_score" -ne "$expected_correct" || "$error_score" -ne "$expected_error" ]]; then
             echo "❌ Some tests failed"
