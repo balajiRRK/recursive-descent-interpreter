@@ -1,7 +1,5 @@
 #!/bin/bash
 
-runner=$1
-
 echo "Attempting to compile java code..."
 javac -d . ../../*.java
 javac Main.java
