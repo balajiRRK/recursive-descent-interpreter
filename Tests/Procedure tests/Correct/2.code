@@ -1,0 +1,11 @@
+procedure c2 is
+	procedure A (object r ) is
+		r = 7;
+	end
+	object x;
+begin
+	x = new object('a', 1);
+	x = 1;
+	begin A(x);
+	print(x);
+end

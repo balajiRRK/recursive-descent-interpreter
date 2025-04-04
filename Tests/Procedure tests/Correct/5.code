@@ -1,0 +1,16 @@
+procedure c5 is
+	procedure A (object r, s ) is 
+		r = 0; 
+		s = 0; 
+	end
+begin
+	object x;
+	object y;
+	x = new object('default', 1);
+	y = new object('default', 1);
+	x = 1;
+	y = 1;
+	begin A(x, y);
+	print(x);
+	print(y);
+end

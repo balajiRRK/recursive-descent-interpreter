@@ -1,0 +1,11 @@
+procedure err2 is
+	procedure A(object r, r ) is
+		integer x;
+		x = r;
+	end
+begin
+	object x;
+	x = new object('default', 1);
+	x = 5;
+	begin A(x, x);
+end
