@@ -77,6 +77,17 @@ class Loop {
         {
             Memory.push();
             ss.execute(); // execute body
+
+            // iterate through all vars in map and if they're an obj decrement their RC and checkRC
+            for (String id : Memory.frameStack.peek().peek().keySet())
+            {
+                if (Memory.frameStack.peek().peek().get(id).getType() == Core.OBJECT
+                && Memory.frameStack.peek().peek().get(id).getMap() != null)
+                {
+                    Memory.modifyRC(id, -1);
+                    Memory.checkRC(id);
+                }
+            }
             Memory.pop(); // pop before updating id since it exits body scope by then
             Memory.getSpecificMap(id).get(id).setVal(e2.execute()); // update id
         }

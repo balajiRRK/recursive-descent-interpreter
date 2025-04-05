@@ -1,0 +1,22 @@
+procedure t9 is
+	procedure A(object a, b) is
+		object n;
+		a = a+b;
+		b : n;
+	end
+	procedure S(object a, b) is
+		object n;
+		a = a-b;
+		begin A(a, b);
+		b : n;
+	end
+	object x;
+	object y;
+begin
+	x = new object('default', 1);
+	x = 1;
+	y = new object('default', 1);
+	y = 1+x;
+	begin S(x, y);
+	print(x);
+end

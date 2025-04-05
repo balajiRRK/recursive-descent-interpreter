@@ -1,0 +1,13 @@
+procedure t7 is
+	integer x;
+	integer y;
+	object a;
+	object b;
+begin
+	x = 10;
+	for (y=1; y < x; y+1) do
+		a : b;
+		a = new object('default', 1);
+		a['default'] = 100;
+	end
+end

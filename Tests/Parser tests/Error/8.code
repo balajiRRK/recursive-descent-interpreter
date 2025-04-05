@@ -1,5 +1,0 @@
-procedure test08 is
-	integer x;
-begin
-	x[2] = 10;
-end

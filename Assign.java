@@ -123,7 +123,7 @@ class Assign {
     }
 
     void execute()
-    {   
+    {
         if (scenario == 0) // id = <expr>;
         {
             Memory.getSpecificMap(id).get(id).setVal(e.execute());
@@ -133,8 +133,20 @@ class Assign {
         } else if (scenario == 2) // id = new object( string, <expr> );
         {
             Memory.getSpecificMap(id).put(id, new Variable(string, e.execute()));
+            System.out.println("gc:" + Memory.totalObjCount);
         } else if (scenario == 3) // id : id2 ;
         {
+
+            if (Memory.getSpecificMap(id).get(id).getMap() != null)
+            {
+                Memory.modifyRC(id, -1); // RC-- since overriding id's reference with id2's reference so losing id's reference to its obj
+                Memory.checkRC(id);
+            }
+
+            if (Memory.getSpecificMap(id2).get(id2).getMap() != null) {
+                Memory.modifyRC(id2, 1); // RC++ since overriding id's reference with id2's reference so gaining another reference to id2's obj
+            }
+
             Memory.getSpecificMap(id).get(id).setMapReference(Memory.getSpecificMap(id2).get(id2));
         }
     }

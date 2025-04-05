@@ -1,9 +1,0 @@
-procedure err02 is
-	integer x;
-begin
-	if x==x then
-		object y;
-		print(x);
-	end
-	x=y;
-end

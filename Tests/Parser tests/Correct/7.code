@@ -1,5 +1,0 @@
-procedure test7 is
-	integer x;
-begin
-	read(x);
-end

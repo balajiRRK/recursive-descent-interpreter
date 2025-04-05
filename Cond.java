@@ -4,6 +4,8 @@ class Cond {
     Cond co;
     int scenario;
 
+    // cond not tested heavily
+
     void parse()
     {
         if (Parser.scanner.currentToken() == Core.NOT)

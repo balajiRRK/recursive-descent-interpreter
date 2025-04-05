@@ -1,0 +1,16 @@
+procedure t6 is
+	procedure add(object a, b) is
+		object n;
+		a = a+b;
+		b : n;
+	end
+	object x;
+	object y;
+begin
+	x = new object('default', 1);
+	x['default'] = 1;
+	y = new object('default', 1);
+	y = 1+x;
+	begin add(x, y);
+	print(x);
+end

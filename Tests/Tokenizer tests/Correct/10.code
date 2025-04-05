@@ -1,1 +1,0 @@
-if (x == y) then read.in x; else print x;

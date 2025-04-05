@@ -1,5 +1,0 @@
-procedure c1 is
-	integer x;
-begin
-	print(10);
-end

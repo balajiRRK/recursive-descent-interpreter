@@ -1,5 +1,0 @@
-procedure err01 is
-	integer x;
-begin
-	x=10+10+;
-end

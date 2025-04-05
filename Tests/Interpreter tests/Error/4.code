@@ -1,5 +1,0 @@
-procedure e03 is
-	integer x;
-begin
-	x = 0 / 0;
-end

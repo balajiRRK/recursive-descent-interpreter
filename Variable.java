@@ -22,6 +22,8 @@ public class Variable {
     public Variable(String temp, int temp2)
     {
         map = new HashMap<String, Integer>();
+        map.put("Reference Count", 1);
+        Memory.totalObjCount++; 
         map.put(temp, temp2);
         originalKey = temp;
         type = Core.OBJECT;
@@ -104,5 +106,10 @@ public class Variable {
         {
             return "empty";
         }
+    }
+
+    public void adjustReferenceCount()
+    {
+        
     }
 }

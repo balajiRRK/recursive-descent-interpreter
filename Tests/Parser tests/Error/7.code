@@ -1,6 +1,0 @@
-procedure err07 is
-	integer x;
-begin
-	read(x);
-	x==10;
-end

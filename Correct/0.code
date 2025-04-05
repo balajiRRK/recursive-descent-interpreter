@@ -1,0 +1,7 @@
+procedure t0 is
+	integer x;
+	object y;
+begin
+	x = 10;
+	print(x);
+end

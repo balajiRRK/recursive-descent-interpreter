@@ -1,0 +1,10 @@
+procedure t3 is
+	integer x;
+	object y;
+	object z;
+begin
+	y = new object('a', 1);
+	y['a'] = 10;
+	z : y;
+	print(z['a']);
+end

@@ -9,6 +9,10 @@ public class Memory {
     static Stack<Stack<Map<String, Variable>>> frameStack = new Stack<Stack<Map<String, Variable>>>();
     static Scanner s;
     static Map<String, Function> functionMap = new HashMap<String, Function>();
+    static int totalObjCount = 0;
+
+    // If obj exits scope then check if RC is 0 then decrement total obj counter 
+    // or if RC is not 0 then decrement RC only
 
     // adds id, val to top-most stack (current function scope this function was called in)
     public static void addToMap(String id, Variable temp)
@@ -58,7 +62,6 @@ public class Memory {
         Stack<Map<String, Variable>> frame = new Stack<Map<String, Variable>>();
         frame.push(frameStack.peek().get(0)); // pushes global variables into each frame
         
-        
         // adds formal params from begin() call to a map with their key id names from 
         // <param> and then finds their value for the key value pair and then pushes that 
         // map to the frame
@@ -70,13 +73,26 @@ public class Memory {
             String key = Memory.functionMap.get(funcName).p.execute().get(i);
             // param value
             Variable value = Memory.getSpecificMap(idList.get(i)).get(idList.get(i));
-            
-            temp.put(key, value);
+            Variable temp2 = new Variable();
+            temp2.map = value.map;
+            temp2.originalKey = value.originalKey;
+            Memory.modifyRC(idList.get(i), 1); // RC-- since about to pop out reference variables to obj after this loop
+            temp.put(key, temp2);
         }
         
         frame.push(temp); // formal param pushed to frame
         frameStack.push(frame);
         Memory.functionMap.get(funcName).ss.execute();
+        for (String id : Memory.frameStack.peek().peek().keySet())
+        {
+            // if id is obj and if id is not null
+            if (Memory.frameStack.peek().peek().get(id).getType() == Core.OBJECT
+                && Memory.frameStack.peek().peek().get(id).getMap() != null)
+            {
+                Memory.modifyRC(id, -1); // RC-- since about to pop out reference variables to obj after this loop
+                Memory.checkRC(id);
+            }
+        }
         Memory.frameStack.pop(); // pop func after execution
     }
 
@@ -108,6 +124,7 @@ public class Memory {
 
     public static void checkFormalParamDuplicateName(ArrayList<String> params)
     {
+        // make hashset of params to get rid of duplicates to compare if amount of params changed
         if (new HashSet<>(params).size() != params.size())
         {
             System.out.println("ERROR: duplicate formal parameter names");
@@ -115,10 +132,37 @@ public class Memory {
         }
     }
 
+    public static void checkRC(String id)
+    {
+        if (Memory.getSpecificMap(id).get(id).getMap().get("Reference Count") == 0)
+        {
+            Memory.totalObjCount--;
+            System.out.println("gc:" + Memory.totalObjCount);
+        }
+    } 
+
     // GETTERS & SETTERS
 
     public static Stack<Stack<Map<String, Variable>>> getStack()
     {
         return frameStack;
     }
+
+    // flag == 1 so RC++
+    // flag == -1 so RC--
+    public static void modifyRC(String id, int flag)
+    {
+        if (flag == 1)
+        {
+            int RC = Memory.getSpecificMap(id).get(id).getObjVal("Reference Count"); 
+            RC++;
+            Memory.getSpecificMap(id).get(id).getMap().put("Reference Count", RC);
+        } else if (flag == -1)
+        {
+            int RC = Memory.getSpecificMap(id).get(id).getObjVal("Reference Count"); 
+            RC--;
+            Memory.getSpecificMap(id).get(id).getMap().put("Reference Count", RC);
+        }
+    }
+
 }

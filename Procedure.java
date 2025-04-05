@@ -70,9 +70,30 @@ class Procedure {
 
         ss.execute();
 
+        // iterate through all vars in map and if they're an obj decrement their RC and checkRC
+        for (String id : Memory.frameStack.peek().peek().keySet())
+        {
+            if (Memory.frameStack.peek().peek().get(id).getType() == Core.OBJECT)
+            {
+                Memory.modifyRC(id, -1);
+                Memory.checkRC(id);
+            }
+        }
+
         Memory.pop(); // local scope pop
         if (hasGlobalScope)
         {
+            // iterate through all vars in map and if they're an obj decrement their RC and checkRC
+            for (String id : Memory.frameStack.peek().peek().keySet())
+            {
+                if (Memory.frameStack.peek().peek().get(id).getType() == Core.OBJECT
+                && Memory.frameStack.peek().peek().get(id).getMap() != null)
+                {
+                    Memory.modifyRC(id, -1);
+                    Memory.checkRC(id);
+                }
+            }
+
             Memory.pop(); // global scope pop
         }
     }

@@ -75,6 +75,17 @@ class If {
             // new scope
             Memory.push();
             ss.execute();
+            
+            // iterate through all vars in map and if they're an obj decrement their RC and checkRC
+            for (String id : Memory.frameStack.peek().peek().keySet())
+            {
+                if (Memory.frameStack.peek().peek().get(id).getType() == Core.OBJECT
+                && Memory.frameStack.peek().peek().get(id).getMap() != null)
+                {
+                    Memory.modifyRC(id, -1);
+                    Memory.checkRC(id);
+                }
+            }
             Memory.pop();
         } else
         {
@@ -86,6 +97,17 @@ class If {
                 // new else scope
                 Memory.push();
                 ss2.execute(); // else
+                
+                // iterate through all vars in map and if they're an obj decrement their RC and checkRC
+                for (String id : Memory.frameStack.peek().peek().keySet())
+                {
+                    if (Memory.frameStack.peek().peek().get(id).getType() == Core.OBJECT
+                    && Memory.frameStack.peek().peek().get(id).getMap() != null)
+                    {
+                        Memory.modifyRC(id, -1);
+                        Memory.checkRC(id);
+                    }
+                }
                 Memory.pop();
             }
         }

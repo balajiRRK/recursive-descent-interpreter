@@ -1,0 +1,17 @@
+procedure t8 is
+	procedure A(object r) is
+		object n;
+		if r < 1 then
+			print(r);
+		else
+			n = new object('default', 1);
+			n['default'] = r-1;
+			begin A(n);
+		end
+	end
+	object a;
+begin
+	a = new object('default', 1);
+	a['default'] = 5;
+	begin A(a);
+end

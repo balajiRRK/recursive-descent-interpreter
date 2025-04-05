@@ -1,0 +1,16 @@
+procedure t4 is
+	object a;
+	object b;
+	object c;
+	procedure A(object x) is
+		b : x;
+		c : x;
+		print(x['default']);
+	end
+begin
+	a = new object('default', 1);
+	b = new object('default', 1);
+	c = new object('default', 1);
+	a['default'] = 99;
+	begin A(a);
+end

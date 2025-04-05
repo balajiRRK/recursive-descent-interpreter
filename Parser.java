@@ -60,6 +60,7 @@ class Parser {
         // only check same scope double declaration
         if (stackOfMaps.peek().containsKey(id))
         {
+            System.out.println(stackOfMaps.toString());
             System.out.println("ERROR: identifier has been doubly-declared in same scope: " + id);
             System.exit(0);
         }
