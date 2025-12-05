@@ -35,7 +35,7 @@ However, you can also run the test cases locally by running the .sh scripts usin
   cd /Tokenizer tests
   ``` 
 
-4. Run the .sh script in your chosen directory:
+4. Run the .sh script in your chosen directory (run in any Unix-like environment):
   ```
   ./tester.sh
   ```
